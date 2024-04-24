@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
+  const url = 'https://itransition-task4-server.onrender.com'
   const [body, setBody] = useState({})
 
   const onChange =({target: {value, name}}: React.ChangeEvent<HTMLInputElement>)=>{
@@ -19,7 +20,7 @@ const LoginPage: React.FC = () => {
 
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await fetch(`http://localhost:8000/auth/signin`,{
+    await fetch(`${url}/auth/signin`,{
       method: "POST",
       headers: {
        'Content-Type': 'application/json'

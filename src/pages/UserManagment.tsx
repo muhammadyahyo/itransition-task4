@@ -8,8 +8,9 @@ const UserManagementPage = () => {
     const [users, setUsers] = useState<User[]>();
     const [selectAll, setSelectAll] = useState(false);
     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
+    const url = 'https://itransition-task4-server.onrender.com'
     const navigate = useNavigate()
-    console.log(selectedUsers);
+    // console.log(selectedUsers);
 
     const { refetch } = useQuery([], () => {
         if (localStorage.getItem('key') === null) {
@@ -18,7 +19,7 @@ const UserManagementPage = () => {
             navigate('/user-management')
         }
 
-        fetch(`http://localhost:8000/users/users`, {
+        fetch(`${url}/users/users`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +37,7 @@ const UserManagementPage = () => {
 
             const updatePromises = selectedUserIds.map(userId => {
                 const userToUpdate = users?.find(user => user._id === userId);
-                fetch(`http://localhost:8000/users/${userId}`, {
+                fetch(`${url}/users/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -49,7 +50,6 @@ const UserManagementPage = () => {
                 }).then((res) => res.json()).then((res) => {
                     console.log(res)
                     
-
                     refetch()
                 });
             });
@@ -92,7 +92,7 @@ const UserManagementPage = () => {
 
             const updatePromises = selectedUserIds.map(userId => {
                 const userToUpdate = users?.find(user => user._id === userId);
-                fetch(`http://localhost:8000/users/${userId}`, {
+                fetch(`${url}/users/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const UserManagementPage = () => {
             const selectedUserIds = selectedUsers;
             const updatePromises = selectedUserIds.map(userId => {
                
-                fetch(`http://localhost:8000/users/${userId}`, {
+                fetch(`${url}/users/${userId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

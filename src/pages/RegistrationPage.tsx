@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
+  const url = 'https://itransition-task4-server.onrender.com'
   const [body, setBody] = useState({})
 
   const onChange =({target: {value, name}}: React.ChangeEvent<HTMLInputElement>)=>{
@@ -17,7 +18,7 @@ const RegistrationPage = () => {
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    await fetch(`http://localhost:8000/auth/signup`,{
+    await fetch(`${url}/auth/signup`,{
       method: "POST",
       headers: {
        'Content-Type': 'application/json'
