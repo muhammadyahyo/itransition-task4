@@ -8,7 +8,6 @@ const Navbar = () => {
     localStorage.clear()
     navigate('signup')
   }
-  console.log(user, 'key');
   
   return (
      <nav className="bg-gray-800 p-4">
