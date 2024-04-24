@@ -3,7 +3,7 @@ import Navbar from './components/navbar';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import UserManagementPage from './pages/UserManagment';
-// https://youtu.be/d8XkOqASw-U
+
 const App = () => {
   return (
     <BrowserRouter>
